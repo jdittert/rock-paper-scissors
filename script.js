@@ -21,6 +21,14 @@ function updateScores(result) {
     document.getElementById("scores").textContent = `Player Score: ${playerScore}. Comptuer Score: ${computerScore}.`;
 }
 
+function endGame() {
+    if (playerScore === 5) {
+        document.getElementById("final").textContent = "You win the match!";
+    } else if (computerScore === 5) {
+        document.getElementById("final").textContent = "Computer wins the match!";
+    }
+}
+
 function playRound(playerChoice) {
     computerChoice = getComputerChoice();
     if (playerChoice === computerChoice) {
@@ -48,6 +56,7 @@ function playRound(playerChoice) {
     }    
     document.getElementById("result").textContent = `You chose ${playerChoice}. Computer chose ${computerChoice}. ${result}`;
     const scores = updateScores(result);
+    const end = endGame();
     return result;    
 }
 
