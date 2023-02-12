@@ -7,71 +7,52 @@ let result;
 // Initialize game scores
 let playerScore = 0;
 let computerScore = 0;
-let drawScore = 0;
 
 function getComputerChoice() {
-    computerChoice = choices[Math.floor(Math.random() * choices.length)];
+    return choices[Math.floor(Math.random() * choices.length)];    
 }
 
-function getPlayerChoice() {
-    playerChoice = prompt("Choose 'rock', 'paper', or 'scissors'.").toLowerCase();    
+function updateScores(result) {
+    if (result === "Computer wins!") {
+        computerScore++;
+    } else if (result === "You win!") {
+        playerScore++;
+    }
+    document.getElementById("scores").textContent = `Player Score: ${playerScore}. Comptuer Score: ${computerScore}.`;
 }
 
-function playRound(playerChoice, computerChoice) {
+function playRound(playerChoice) {
+    computerChoice = getComputerChoice();
     if (playerChoice === computerChoice) {
-        result = "It's a draw";               
+        result = "It's a draw.";               
     } else if (playerChoice === "rock") {
         if (computerChoice === "paper") {
-            result = "Computer wins!";
+            result = "Computer wins!";                       
         } else {
-            result = "Player wins!";
+            result = "You win!";                     
         }               
     } else if (playerChoice === "paper") {
         if (computerChoice === "scissors") {
-            result = "Computer wins!";
+            result = "Computer wins!";                      
         } else {
-            result = "Player wins!";
+            result = "You win!";                   
         }
     } else if (playerChoice === "scissors") {
         if (computerChoice === "rock") {
-            result = "Computer wins!";
+            result = "Computer wins!";                      
         } else {
-            result = "Player wins!";
+            result = "You win!";                       
         }
     } else {
         result = "Something went wrong";
-    }
-    return result;
+    }    
+    document.getElementById("result").textContent = `You chose ${playerChoice}. Computer chose ${computerChoice}. ${result}`;
+    const scores = updateScores(result);
+    return result;    
 }
 
-function game() {
-    for (i = 0; i < 5; i++) {
-        getComputerChoice();
-        getPlayerChoice();
-        playRound(playerChoice, computerChoice);
-        console.log(playRound(playerChoice, computerChoice));
-        if (result === "It's a draw") {
-            drawScore++;
-        } else if (result === "Player wins!") {
-            playerScore++;
-        } else if (result === "Computer wins!") {
-            computerScore++;
-        } else {
-            console.log("Round invalid. Replay round.");
-            i--;
-        }
-    }
-    console.log(`Player: ${playerScore}, Computer: ${computerScore}, Draws: ${drawScore}`);
-}
+document.getElementById("rock").addEventListener("click", function(){ playRound("rock"); });
+document.getElementById("paper").addEventListener("click", function(){ playRound("paper"); });
+document.getElementById("scissors").addEventListener("click", function(){ playRound("scissors"); });
 
-game();
-
-if (playerScore > computerScore) {
-    console.log("Player wins the game!");
-} else if (playerScore < computerScore) {
-    console.log("Computer wins the game!");
-} else {
-    console.log("It's a tie!");
-}
-
-console.log("Refresh the page to play again.");
+document.getElementById("scores").textContent = `Player Score: ${playerScore}. Comptuer Score: ${computerScore}.`;
