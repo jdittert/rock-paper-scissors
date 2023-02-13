@@ -18,7 +18,8 @@ function updateScores(result) {
     } else if (result === "You win!") {
         playerScore++;
     }
-    document.getElementById("scores").textContent = `Player Score: ${playerScore}. Comptuer Score: ${computerScore}.`;
+    document.getElementById("playerScore").textContent = `Player Score: ${playerScore}.`;
+    document.getElementById("computerScore").textContent = `Computer Score: ${computerScore}.`;
 }
 
 function endGame() {
@@ -54,7 +55,7 @@ function playRound(playerChoice) {
     } else {
         result = "Something went wrong";
     }    
-    document.getElementById("result").textContent = `You chose ${playerChoice}. Computer chose ${computerChoice}. ${result}`;
+    document.getElementById("result").textContent = `You chose ${playerChoice.toUpperCase()}. Computer chose ${computerChoice.toUpperCase()}. ${result}`;
     const scores = updateScores(result);
     const end = endGame();
     return result;    
@@ -64,4 +65,5 @@ document.getElementById("rock").addEventListener("click", function(){ playRound(
 document.getElementById("paper").addEventListener("click", function(){ playRound("paper"); });
 document.getElementById("scissors").addEventListener("click", function(){ playRound("scissors"); });
 
-document.getElementById("scores").textContent = `Player Score: ${playerScore}. Comptuer Score: ${computerScore}.`;
+document.getElementById("playerScore").textContent = `Player Score: ${playerScore}.`;
+document.getElementById("computerScore").textContent = `Computer Score: ${computerScore}.`;

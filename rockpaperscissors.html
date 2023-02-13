@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <title>Rock Paper Scissors</title>
 </head>
@@ -11,14 +12,17 @@
     <div>
         <h1>Rock, Paper, Scissors</h1>
     </div>
-    <div>
+    <div class="buttons">
         <button id="rock">Rock</button>
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
     </div>
-    <div id="result"></div>
-    <div id="scores"></div>
-    <div id="final">First to 5 wins!</div>
+    <div id="result" class="text">Choose your weapon!</div>
+    <div class="scores">
+        <div id="playerScore" class="score"></div>
+        <div id="computerScore" class="score"></div>
+    </div>
+    <div id="final" class="text">First to 5 wins!</div>
     
 </body>
 </html>
