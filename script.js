@@ -26,11 +26,48 @@ function endGame() {
     if (playerScore === 5) {
         document.getElementById("final").innerText = "You win the match!" + "\n" + "\n" + "Click to play again.";
         document.getElementById("final").classList.add("green");
+        const freeze = disableButtons();
+        document.getElementById("final").addEventListener("click", function(){ resetGame(); });        
     } else if (computerScore === 5) {
         document.getElementById("final").innerText = "Computer wins the match!" + "\n" + "\n" + "Click to play again.";
         document.getElementById("final").classList.remove("green");
         document.getElementById("final").classList.add("red");
+        const freeze = disableButtons();   
+        document.getElementById("final").addEventListener("click", function(){ resetGame(); });     
     }
+}
+
+function disableButtons() {
+    const buttons = document.getElementsByTagName("button");
+    for (const button of buttons) {
+        button.disabled = true;
+}}
+
+function enableButtons() {
+    const buttons = document.getElementsByTagName("button");
+    for (const button of buttons) {
+        button.disabled = false;
+}}
+
+function resetScore() {
+    playerScore = 0;
+    computerScore = 0;
+    document.getElementById("playerScore").textContent = `Player Score: ${playerScore}.`;
+    document.getElementById("computerScore").textContent = `Computer Score: ${computerScore}.`;
+}
+
+function resetFinal() {
+    document.getElementById("final").innerText = "First to 5 wins!";
+    document.getElementById("final").classList.remove("red");
+    document.getElementById("final").classList.remove("green");
+}
+
+function resetGame() {
+    if (playerScore === 5 || computerScore === 5) {
+        const buttons = enableButtons();
+        const score = resetScore(); 
+        const final = resetFinal();    
+    }   
 }
 
 function playRound(playerChoice) {
