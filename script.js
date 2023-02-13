@@ -24,9 +24,12 @@ function updateScores(result) {
 
 function endGame() {
     if (playerScore === 5) {
-        document.getElementById("final").textContent = "You win the match!";
+        document.getElementById("final").innerText = "You win the match!" + "\n" + "\n" + "Click to play again.";
+        document.getElementById("final").classList.add("green");
     } else if (computerScore === 5) {
-        document.getElementById("final").textContent = "Computer wins the match!";
+        document.getElementById("final").innerText = "Computer wins the match!" + "\n" + "\n" + "Click to play again.";
+        document.getElementById("final").classList.remove("green");
+        document.getElementById("final").classList.add("red");
     }
 }
 
