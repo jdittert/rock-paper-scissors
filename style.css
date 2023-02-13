@@ -61,10 +61,12 @@ button {
     background-color: red;
     border-color: white;
     color: white;
+    cursor: pointer;
 }
 
 .green {
     background-color: green;
     border-color: white;
     color: white;
+    cursor: pointer;
 }
